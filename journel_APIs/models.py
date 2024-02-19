@@ -10,7 +10,7 @@ class Publisher_model(models.Model):
     profile_photo = models.ImageField()
 
     def __str__(self):
-        return self.full_name
+        return self.name
 
 
 class Authors(models.Model):
@@ -22,7 +22,7 @@ class Authors(models.Model):
     approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.full_name
+        return self.name
 
 
 class PublishingHouse(models.Model):
