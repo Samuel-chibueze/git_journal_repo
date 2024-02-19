@@ -126,7 +126,7 @@ class PublishersList(APIView):
 
 
 
-    # updating the journel instance
+    # updating the publisher instance
     def put(seld,request, pk):
         try:
             instance = Publisher_model.objects.get(pk=pk)

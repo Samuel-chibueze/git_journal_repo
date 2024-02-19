@@ -31,4 +31,4 @@ class JournalSerializer(serializers.ModelSerializer):
 class AuthorsSerializer(serializers.ModelSerializer):
     class Meta:
         model=Authors
-        fields="__all__"
+        fields=["id", "name", "email", "age", "bio", "phone_number", "approved"]
