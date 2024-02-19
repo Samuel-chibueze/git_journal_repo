@@ -74,10 +74,10 @@ class Journel(APIView):
         try:
             instance = journel_model.objects.get(pk=pk)
         except journel_model.DoesNotExist:
-            return Response({"message": " the user is not found "}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": " the journal is not found "}, status=status.HTTP_400_BAD_REQUEST)
 
         instance.delete()
-        return Response({"message":"user has been deleted"}, status=status.HTTP_200_OK)
+        return Response({"message":"journal has been deleted"}, status=status.HTTP_200_OK)
         
         
 
@@ -126,7 +126,7 @@ class PublishersList(APIView):
 
 
 
-    # updating the publisher instance
+    # updating the publisher model instance
     def put(seld,request, pk):
         try:
             instance = Publisher_model.objects.get(pk=pk)
