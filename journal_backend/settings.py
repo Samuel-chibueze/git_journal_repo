@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
@@ -89,8 +90,8 @@ WSGI_APPLICATION = "journal_backend.wsgi.application"
 
 database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
-  'default': dj_database_url.config(default=database_url)
-#   'default': dj_database_url.config(default='postgres://journal_db_ye31_user:mzm7rivIKWvkSnYchz4qIMctAz2z3ujS@dpg-cn9l2nud3nmc73disdu0-a.oregon-postgres.render.com/journal_db_ye31')
+#   'default': dj_database_url.config(default=database_url)
+   'default': dj_database_url.config(default='postgres://journal_db_ye31_user:mzm7rivIKWvkSnYchz4qIMctAz2z3ujS@dpg-cn9l2nud3nmc73disdu0-a.oregon-postgres.render.com/journal_db_ye31')
 }
 
 
