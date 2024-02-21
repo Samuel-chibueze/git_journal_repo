@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "django-insecure-vop0l=ux*1f&psr-f6h3jf%pe-@&9r$1^-f(wuqw1r)c5zc%vb"
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "django-insecure-vop0l=ux*1f&psr-f6h3jf%pe-@&9r$1^-f(wuqw1r)c5zc%vb"
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG", "False").lower() == "true "
@@ -133,7 +133,25 @@ STATIC_URL = "static/"
 
 MEDIA_URL = '/media/'
 
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# settings.py
+
+
+# Define the STATIC_ROOT setting
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Define the MEDIA_ROOT setting
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Create staticfiles directory if it doesn't exist
+if not os.path.exists(STATIC_ROOT):
+    os.makedirs(STATIC_ROOT)
+
+# Create media directory if it doesn't exist
+if not os.path.exists(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
