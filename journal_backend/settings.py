@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "journel_APIs",
     "corsheaders",
-     "rest_framework"
+     "rest_framework",
+      'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,12 @@ TEMPLATES = [
 WSGI_APPLICATION = "journal_backend.wsgi.application"
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -92,9 +99,22 @@ WSGI_APPLICATION = "journal_backend.wsgi.application"
 database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
 #   'default': dj_database_url.config(default=database_url)
-   'default': dj_database_url.config(default='postgres://journal_db_ye31_user:mzm7rivIKWvkSnYchz4qIMctAz2z3ujS@dpg-cn9l2nud3nmc73disdu0-a.oregon-postgres.render.com/journal_db_ye31')
+   'default': dj_database_url.config(default='postgres://ujoset_database_user:FaEZ4goP5jnxgKD5CWKMnd1WjPuEKqDc@dpg-cpa5ehlds78s73cri3ug-a.oregon-postgres.render.com/ujoset_database')
 }
 
+
+
+from datetime import timedelta
+...
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": False,
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
