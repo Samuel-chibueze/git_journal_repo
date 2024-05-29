@@ -4,10 +4,10 @@ from rest_framework import status
 from django.db import IntegrityError
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
-from .models import Authors
+# from .models import
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.models import User
-from .serializers import AuthorsSerializer, UserSerializer,loginSerializer
+from .serializers import UserSerializer,loginSerializer
 # Create your views here.
 
     

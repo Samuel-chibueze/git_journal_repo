@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Authors
+# from .models import Authors
 from django.contrib.auth.models import User
 
 
@@ -17,10 +17,10 @@ from django.contrib.auth.models import User
 #         model=journel_model
 #         fields = ['id', 'author', 'title', 'discription', 'file', 'date_published', 'rating', 'ranking', 'Publisher', 'Publishing_house']
 
-class AuthorsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Authors
-        fields=["id", "name", "email", "age", "bio", "phone_number", "approved"]
+# class AuthorsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model=Authors
+#         fields=["id", "name", "email", "age", "bio", "phone_number", "approved"]
 
 
 
