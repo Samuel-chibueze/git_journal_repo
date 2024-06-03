@@ -1,27 +1,37 @@
 from rest_framework import serializers
-# from .models import Authors
+from .models import Author, JournalModel
 from django.contrib.auth.models import User
 
 
-# class JournalSerializer(serializers.ModelSerializer):
-#     # author_name = serializers.SerializerMethodField()
-#     # author = serializers.CharField(source='author.name', read_only=True)
-#     # Publisher = serializers.CharField(source="Pubisher.name", read_only=True)
-#     # Publisher_name=serializers.SerializerMethodField()
-#     # Publisher_name = serializers.StringRelatedField(source='Publisher')
-#     # def get_publisher_name(self, obj):
-#     #     return obj.Publisher.name
-    
+class AuthorSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+    class Meta:
+        model = Author
+        fields = ['id', 'bio', 'phone_number', 'approved', 'date', 'username','email']
+        # You can include other fields you want to display, or use '__all__' and exclude 'user'
+        # fields = '__all__'  # Alternatively, you can use this line and exclude the 'user' field using 'extra_kwargs'
 
-#     class Meta:
-#         model=journel_model
-#         fields = ['id', 'author', 'title', 'discription', 'file', 'date_published', 'rating', 'ranking', 'Publisher', 'Publishing_house']
+    extra_kwargs = {
+        'user': {'write_only': True}
+    }
+class JournalSerializer(serializers.ModelSerializer):
+    author = AuthorSerializer(read_only=True)
 
-# class AuthorsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model=Authors
-#         fields=["id", "name", "email", "age", "bio", "phone_number", "approved"]
-
+    class Meta:
+        model = JournalModel
+        fields = [
+            'id',
+            'author',
+            'title',
+            'description',  # Corrected spelling here
+            'file',
+            'date_published',
+            'rating',
+            'cover_image',
+            'payment_proof',
+            'approved'
+        ]
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -30,13 +40,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['username', 'password', 'first_name', 'last_name', 'email']
 
     def validate_email(self, value):
-        # Check if any user already exists with this email.
         if User.objects.filter(email=value).exists():
             raise serializers.ValidationError("A user with that email already exists.")
         return value
 
     def validate_username(self, value):
-        # Check if the username is already in use.
         if User.objects.filter(username=value).exists():
             raise serializers.ValidationError("A user with that username already exists.")
         return value
@@ -48,5 +56,5 @@ class UserSerializer(serializers.ModelSerializer):
     
 
 class loginSerializer(serializers.Serializer):
-    username= serializers.CharField(required=True)
+    username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)

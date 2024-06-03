@@ -47,6 +47,8 @@ INSTALLED_APPS = [
       'rest_framework_simplejwt',
 ]
 
+
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -99,7 +101,7 @@ REST_FRAMEWORK = {
 database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
 #   'default': dj_database_url.config(default=database_url)
-   'default': dj_database_url.config(default='postgres://ujoset_database_user:FaEZ4goP5jnxgKD5CWKMnd1WjPuEKqDc@dpg-cpa5ehlds78s73cri3ug-a.oregon-postgres.render.com/ujoset_database')
+  'default': dj_database_url.config(default='postgres://ujoset_database_user:FaEZ4goP5jnxgKD5CWKMnd1WjPuEKqDc@dpg-cpa5ehlds78s73cri3ug-a.oregon-postgres.render.com/ujoset_database')
 }
 
 
@@ -108,13 +110,16 @@ from datetime import timedelta
 ...
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
 
 }
+
+# AUTH_USER_MODEL = 'journel_APIs.CustomUser'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
