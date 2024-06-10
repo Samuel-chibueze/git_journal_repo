@@ -50,8 +50,7 @@ class Author(models.Model):
     date =models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.bio
-
+        return f"{self.user.username} - {self.phone_number}"
 
 
 VOL = [
