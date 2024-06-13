@@ -93,7 +93,7 @@ class AuthorListCreateAPIView(APIView):
 from django.shortcuts import get_object_or_404
 
 class AuthorDetailAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_object(self, pk):
         return get_object_or_404(Author, user_id=pk)
@@ -117,7 +117,7 @@ class AuthorDetailAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class JournalListCreateAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         journals = JournalModel.objects.all()
@@ -132,7 +132,7 @@ class JournalListCreateAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class JournalDetailAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_object(self, pk):
      return get_object_or_404(JournalModel, author__user_id=pk)
