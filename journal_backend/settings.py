@@ -26,8 +26,7 @@ SECRET_KEY = "django-insecure-vop0l=ux*1f&psr-f6h3jf%pe-@&9r$1^-f(wuqw1r)c5zc%vb
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# 
-# DEBUG = os.environ.get("DEBUG", "False").lower() == "true "
+# DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 DEBUG = True
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'git-journal-repo.onrender.com']
@@ -43,11 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "journel_APIs",
     "corsheaders",
-     "rest_framework",
-      'rest_framework_simplejwt',
+    "rest_framework",
+    'rest_framework_simplejwt',
 ]
-
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -81,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "journal_backend.wsgi.application"
 
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -91,23 +87,18 @@ REST_FRAMEWORK = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
-database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
-#   'default': dj_database_url.config(default=database_url)
-  'default': dj_database_url.config(default='postgres://ujoset_database_user:FaEZ4goP5jnxgKD5CWKMnd1WjPuEKqDc@dpg-cpa5ehlds78s73cri3ug-a.oregon-postgres.render.com/ujoset_database')
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ujoset_database',
+        'USER': 'ujoset_admin',
+        'PASSWORD': 'Ef?@$gs;*[5e',
+        'HOST': 'localhost',  # Set to your DB host
+        'PORT': '3306',        # Set to your DB port
+    }
 }
 
-
-
 from datetime import timedelta
-...
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
@@ -115,11 +106,9 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
-
 }
 
 # AUTH_USER_MODEL = 'journel_APIs.CustomUser'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -139,7 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -151,18 +139,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
 
 MEDIA_URL = '/media/'
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# settings.py
-
 
 # Define the STATIC_ROOT setting
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -178,7 +160,6 @@ if not os.path.exists(STATIC_ROOT):
 if not os.path.exists(MEDIA_ROOT):
     os.makedirs(MEDIA_ROOT)
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -188,8 +169,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://ujoset.com",
 ]
-
-
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
