@@ -90,9 +90,9 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ujoset_database',
-        'USER': 'ujoset_admin',
-        'PASSWORD': 'Ef?@$gs;*[5e',
+        'NAME': 'journal_datebase',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',  # Set to your DB host
         'PORT': '3306',        # Set to your DB port
     }
