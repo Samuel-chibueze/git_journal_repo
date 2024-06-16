@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import dj_database_url
 from pathlib import Path
 import os
+import pymysql
+pymysql.install_as_MySQLdb()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -87,16 +89,27 @@ REST_FRAMEWORK = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'journal_datebase',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',  # Set to your DB host
-        'PORT': '3306',        # Set to your DB port
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
     }
 }
+
+# Ensure Django uses PyMySQL as MySQLdb
+import pymysql
+pymysql.install_as_MySQLdb()
+
 
 from datetime import timedelta
 
