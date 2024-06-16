@@ -89,8 +89,6 @@ REST_FRAMEWORK = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-import pymysql
-pymysql.install_as_MySQLdb()
 
 DATABASES = {
     'default': {
@@ -105,10 +103,6 @@ DATABASES = {
         },
     }
 }
-
-# Ensure Django uses PyMySQL as MySQLdb
-import pymysql
-pymysql.install_as_MySQLdb()
 
 
 from datetime import timedelta

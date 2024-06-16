@@ -68,7 +68,7 @@ def get_default_author():
 class JournalModel(models.Model):
     author  = models.ForeignKey(Author, default=get_default_author, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
-    volume = models.CharField(max_length=50, choices=VOL, default="No volume")
+    volume = models.CharField(max_length=50, choices=VOL, default="No volume available")
     description = models.TextField(default="no description given by author")
     file = models.FileField(upload_to='documents/')
     date_published = models.DateTimeField(auto_now_add=True)
